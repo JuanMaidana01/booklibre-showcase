@@ -71,10 +71,7 @@ El sistema es un monolito políglota con una separación clara de responsabilida
 | Deploy              | Render (Web Service + Postgres + Key Value) + MongoDB Atlas |
 
 <p align="center">
-    <img
-        src="./assets/arquitectura_booklibre.png"
-        alt="Arquitectura"
-        width="900"/>
+    <img src="./assets/arquitectura_booklibre.jpg" alt="Arquitectura" width="900"/>
 </p>
 
 ## Decisiones técnicas
@@ -83,7 +80,11 @@ El sistema es un monolito políglota con una separación clara de responsabilida
 2. **Por qué MongoDB para el catálogo y el log de clicks:** el catálogo de libros es un dato de lectura intensiva y con forma flexible, y el log de clicks es un caso de escritura masiva sin necesidad de transacciones — un patrón que encaja mejor con un modelo documental que con filas relacionales.
 3. **Por qué Redis para el ranking:** recalcular el ranking de libros populares en cada request al Home hubiese degradado la performance de la pantalla de mayor tráfico. Se optó por un patrón cache-aside con sorted sets, actualizando el conteo en cada click y con un TTL definido para mantener la información razonablemente fresca.
 4. **Por qué GraphQL además de REST:** el dashboard de KPIs necesita orquestar datos que combinan Redis, PostgreSQL y MongoDB en una sola respuesta. GraphQL permitió resolver cada métrica con su propio resolver sin sobrecargar la REST existente ni duplicar endpoints.
-5. **Mongo Atlas M0 vs. cluster sharded local:** el free tier de Atlas no soporta sharding, por lo que para el deploy en la nube se simplificó a una instancia única, manteniendo el cluster de 2 shards documentado como diseño local. [Ajustar según qué decidieron finalmente.]
+5. **Mongo Atlas M0 vs. cluster sharded local:** el diseño original contemplaba 2 routers, 3 config servers y 3 shards con replica set de 3 nodos cada uno (ver diagrama abajo), probado en local con Docker. El free tier de Atlas no soporta sharding, por lo que el deploy en la nube usa una instancia única, documentando esta decisión como trade-off consciente.
+
+<p align="center">
+    <img src="./assets/mongodb_sharding_booklibre.jpg" alt="Diseño de sharding" width="900"/>
+</p>
 
 ## Caso de uso principal: Ranking de libros populares (cache-aside)
 

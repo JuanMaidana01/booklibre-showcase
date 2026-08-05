@@ -11,7 +11,7 @@ El código permanece privado por tratarse de un desarrollo colaborativo, por lo 
 BookLibre es una aplicación web (desktop) para publicar libros propios, buscarlos por disponibilidad y reservarlos por rango de fechas, gestionando todo el ciclo de préstamo entre usuarios.
 
 <p align="center">
-<img src="./assets/busquedaYReserva.gif" width="700"/>
+<img src="./assets/reserva.gif" width="700"/>
 </p>
 
 ## Características
@@ -110,9 +110,7 @@ Desplegar cuatro piezas de infraestructura (app, PostgreSQL, Redis/Key Value y M
 ## Demostración (UI)
 
 <p align="center">
-    <img src="./assets/home.jpeg" width="220"/>
-    <img src="./assets/detalleLibro.jpeg" width="220"/>
-    <img src="./assets/perfil.jpeg" width="220"/>
+    <img src="./assets/ventanas.gif" width="700"/>
 </p>
 
 ## Estado del proyecto

@@ -28,7 +28,7 @@ BookLibre es una aplicación web (desktop) para publicar libros propios, buscarl
 
 ## Contexto y evolución del proyecto
 
-BookLibre fue el trabajo práctico integrador de una de las materias finales de la carreraæ, desarrollado en cuatro entregas incrementales a lo largo del cuatrimestre:
+BookLibre fue el trabajo práctico integrador de una de las materias finales de la carrera desarrollado en cuatro entregas incrementales a lo largo del cuatrimestre:
 
 1. **Entrega 0:** dominio, interfaz de usuario (React) y backend (Kotlin + Spring Boot) con persistencia en memoria.
 2. **Entrega 1:** persistencia relacional con PostgreSQL (Hibernate/JPA), autenticación JWT y autorización por rol, más componentes de base de datos (vistas, triggers, functions y constraints) para resolver reglas de negocio directamente en la capa de datos.
@@ -68,7 +68,7 @@ El sistema es un monolito políglota con una separación clara de responsabilida
 | Base documental     | MongoDB (catálogo de libros, log de clicks)  |
 | Caché               | Redis (ranking de populares, leaderboard)    |
 | Autenticación       | JWT                                          |
-| Deploy              | Render (Web Service + Postgres + Key Value) + MongoDB Atlas |
+| Deploy              | Render (Web Service + Postgres + Key Value) |
 
 <p align="center">
     <img src="./assets/arquitectura_booklibre.jpg" alt="Arquitectura" width="900"/>
